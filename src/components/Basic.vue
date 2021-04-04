@@ -14,15 +14,10 @@
     <el-image :src="dialogImageUrl"></el-image>
   </el-dialog>
   <el-button type="success" @click="onsubmit">确定上传</el-button>
-
-<!--  <template v-for="result in results" :key="result.name">-->
-<!--    <el-image :src="result.img"></el-image>-->
-<!--  </template>-->
 </template>
 
 <script>
 import axios from 'axios'
-// import {Base64} from 'js-base64'
 export default {
   name: 'Basic',
   data() {
@@ -40,9 +35,6 @@ export default {
     handleRemove(file, fileList) {
       console.log(file, fileList);
     },
-    handlePreview(file) {
-      console.log(file);
-    },
     handlePictureCardPreview(file) {
       this.dialogImageUrl = file.url;
       this.dialogVisible = true;
@@ -58,9 +50,10 @@ export default {
         data: formdata,
       }).then(res => {
         this.results = res.data.results
-        for (let i = 0; i < this.results.length; i++) {
-          this.results[i].img = 'data:image/jpeg;base64,' + this.results[i].img
-        }
+        sessionStorage.setItem('results', res.data.results)
+        this.$router.push({
+          name: 'Check'
+        })
       })
     },
     onchange(file, fileList) {

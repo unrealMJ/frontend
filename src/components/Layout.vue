@@ -1,48 +1,26 @@
 <template>
   <el-container>
-    <el-header>Header</el-header>
+    <el-header>超声内镜肿瘤检测系统</el-header>
     <el-container>
       <el-aside>
-        <el-menu
-            default-active="2"
-            class="el-menu-vertical-demo"
-            @open="handleOpen"
-            @close="handleClose">
-          <el-submenu index="1">
-            <template #title>
-              <i class="el-icon-location"></i>
-              <span>导航一</span>
-            </template>
-            <el-menu-item-group>
-              <template #title>分组一</template>
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="1-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="1-4">
-              <template #title>选项4</template>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-          <el-menu-item index="2">
+        <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+          <el-menu-item index="1">
             <i class="el-icon-menu"></i>
-            <template #title>导航二</template>
+            <router-link to="/upload">上传图片</router-link>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <i class="el-icon-document"></i>
+            <template #title>查看结果</template>
           </el-menu-item>
           <el-menu-item index="3" disabled>
-            <i class="el-icon-document"></i>
-            <template #title>导航三</template>
-          </el-menu-item>
-          <el-menu-item index="4">
             <i class="el-icon-setting"></i>
-            <template #title>导航四</template>
+            <template #title>生成病历</template>
           </el-menu-item>
         </el-menu>
 
       </el-aside>
       <el-main>
-        <basic></basic>
+        <router-view></router-view>
       </el-main>
     </el-container>
     <el-footer>Foot</el-footer>
@@ -50,12 +28,23 @@
 </template>
 
 <script>
-import Basic from "./Basic";
+// import Basic from "./Basic";
 
 export default {
   name: "Layout",
   components: {
-    Basic
+    // Basic
+  },
+  created() {
+
+  },
+  methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    }
   }
 }
 </script>
@@ -95,3 +84,40 @@ body > .el-container {
   line-height: 320px;
 }
 </style>
+
+<!--<template>-->
+<!--  <el-row :gutter="20">-->
+<!--    <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>-->
+<!--    <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>-->
+<!--    <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>-->
+<!--    <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>-->
+<!--  </el-row>-->
+<!--</template>-->
+<!--<style>-->
+<!--.el-row {-->
+<!--  margin-bottom: 20px;-->
+<!--&:last-child {-->
+<!--   margin-bottom: 0;-->
+<!-- }-->
+<!--}-->
+<!--.el-col {-->
+<!--  border-radius: 4px;-->
+<!--}-->
+<!--.bg-purple-dark {-->
+<!--  background: #99a9bf;-->
+<!--}-->
+<!--.bg-purple {-->
+<!--  background: #d3dce6;-->
+<!--}-->
+<!--.bg-purple-light {-->
+<!--  background: #e5e9f2;-->
+<!--}-->
+<!--.grid-content {-->
+<!--  border-radius: 4px;-->
+<!--  min-height: 36px;-->
+<!--}-->
+<!--.row-bg {-->
+<!--  padding: 10px 0;-->
+<!--  background-color: #f9fafc;-->
+<!--}-->
+<!--</style>-->
