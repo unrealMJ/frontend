@@ -14,6 +14,16 @@ const routes = [
     path: '/check',
     name: 'Check',
     component: Check
+  },
+  {
+    path: '/',
+    name: 'Login',
+    component: () => import('../components/Login')
+  },
+  {
+    path: '/main',
+    name: 'Main',
+    component: () => import('../components/Main')
   }
   // {
   //   path: '/about',
