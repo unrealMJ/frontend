@@ -17,9 +17,25 @@ const routes = [
         name: 'Upload'
       },
       {
+        path: 'recordList',
+        component: () => import('../components/RecordList'),
+        name: 'RecordList'
+      },
+      {
         path: 'view',
         component: () => import('../components/Check'),
         name: 'View'
+      },
+      {
+        path: 'check/:date/:patient_id',
+        component: () => import('../components/Check'),
+        name: 'Check',
+        props: true
+      },
+      {
+        path: 'record',
+        component: () => import('../components/Record'),
+        name: "Record"
       }
     ]
   },

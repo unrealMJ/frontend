@@ -130,7 +130,21 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$router.push('/layout')
+
+          let data = {
+            'user': this.loginForm.username,
+            'password': this.loginForm.password
+          }
+          this.$axios({
+            url: '/api/basic/login',
+            method: 'post',
+            data: data
+          }).then(res => {
+            sessionStorage.setItem('doctorName', res.data.name)
+            if (res.data.code === 200) {
+              this.$router.push('/layout')
+            }
+          })
         } else {
           console.log('error submit!!')
           return false

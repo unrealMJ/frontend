@@ -25,7 +25,7 @@ export default {
   data () {
     return {
       form: {
-        'id': '',
+        'id': '20210508',
         'name': '',
         'sex': '',
         'age': ''
@@ -34,7 +34,19 @@ export default {
   },
   methods: {
     submit() {
-      console.log('根据就诊卡号获取病人信息')
+      let params = {
+        'patient_id': this.form.id
+      }
+      sessionStorage.setItem('patient_id', this.form.id)
+      this.$axios({
+        method: 'get',
+        url: '/api/basic/patient_info',
+        params: params
+      }).then(res => {
+        this.form.name = res.data.name
+        this.form.age = res.data.age
+        this.form.sex = res.data.sex
+      })
     }
   }
 }

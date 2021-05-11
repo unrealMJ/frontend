@@ -19,13 +19,15 @@
         </el-menu-item>
         <el-menu-item :index="2">
           <i></i>
-          <router-link to="/layout/view">
+          <router-link to="/layout/recordList">
             <span>查看结果</span>
           </router-link>
         </el-menu-item>
         <el-menu-item :index="3">
           <i></i>
-          <span>生成病历</span>
+          <router-link to="/layout/record">
+            <span>生成病历</span>
+          </router-link>
         </el-menu-item>
       </el-menu>
     </el-scrollbar>

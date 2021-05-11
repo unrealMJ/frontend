@@ -3,7 +3,7 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <span class="el-dropdown-link">张三
+          <span class="el-dropdown-link">{{doctorName}}
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
         </div>
@@ -28,8 +28,14 @@ export default {
   name: "NavbarUp",
   components: {
   },
+  data () {
+    return {
+      doctorName: sessionStorage.getItem('doctorName')
+    }
+  },
   methods: {
-    async logout() {
+    logout() {
+      this.$router.push('/')
       console.log('推出系统')
     }
   }
@@ -42,7 +48,7 @@ export default {
   overflow: hidden;
   position: relative;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  //box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .right-menu {
     float: right;
